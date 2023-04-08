@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Airline;
+use App\Models\Flight;
+use App\Models\Rate;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,11 +16,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $alphabets = ['A', 'B', 'C', 'D', 'E'];
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        Airline::factory()->count(5)->create();
+
+        foreach ($alphabets as $alphabet) {
+            Rate::create([
+                'airline_id' => 1,
+                'class_name' => $alphabet,
+            ]);
+        }
+
+        Flight::factory()->count(5)->create();
     }
 }
