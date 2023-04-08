@@ -1,6 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\V1\AirlineController;
+use App\Http\Controllers\Api\V1\FlightController;
+use App\Http\Controllers\Api\V1\RateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// result
+Route::post('flights/cancel', [FlightController::class, 'cancelTicket']); // with database
+Route::get('flights/cancel-db', [FlightController::class, 'cancelTicketDatabase']); // with parameters
+
+// rate
+Route::get('rate/list', [RateController::class, 'index']);
+
+// airline
+Route::get('airline/list', [AirlineController::class, 'index']);
