@@ -11,10 +11,13 @@ use Illuminate\Support\Str;
 class FlightService
 {
     public $price;
+
     public $departureAt;
+
     public $penalties;
 
     public $rate;
+
     public $airline;
 
     public static function ready($price, $departureAt, Rate $rate, Airline $airline): static
